@@ -15,17 +15,15 @@ for (const gallery of galleryItems) {
       `<div class="gallery__item">
       <a class "gallery__link" href="${gallery.original}">
         <img
-          style="width:500px; height:500px;"
+         
           class="gallery__image"
           src="${gallery.preview}"
-          data-source="large-image.jpg"
+          data-source="${gallery.original}"
           alt="${gallery.description}"
         />
       </a>
     </div>`
   );
-
-  console.log(ul);
 }
 ul.addEventListener("click", (ev) => {
   ev.preventDefault();
