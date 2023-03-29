@@ -2,18 +2,11 @@ import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 //pętla for:
 
-const LiElement = document.createElement("li");
-console.log(LiElement);
 const ul = document.querySelector(".gallery");
-console.log(galleryItems);
 
 for (const gallery of galleryItems) {
-  const li = document.createElement("li");
-
-  document.body.innerHTML = galleryItems.map(
-    (gallery) =>
-      `<div class="gallery__item">
-      <a class "gallery__link" href="${gallery.original}">
+  const Elementli = `<div class= "gallery__item">
+      <a class = "gallery__link" href="${gallery.original}">
         <img
          
           class="gallery__image"
@@ -22,14 +15,18 @@ for (const gallery of galleryItems) {
           alt="${gallery.description}"
         />
       </a>
-    </div>`
-  );
+    </div>`;
+  const listElement = document.createElement("li");
+  listElement.innerHTML = Elementli;
+  ul.appendChild(listElement);
 }
+console.log(galleryItems);
+
 ul.addEventListener("click", (ev) => {
   ev.preventDefault();
 
-  window.basicLightbox.create(
-    `<img style="width:500px; height:500px" src=${gallery.preview} ${gallery.original} ${gallery.description}/>`
+  const instance = window.basicLightbox.create(
+    ` <img src="${event.target.dataset.source}" width="800" height="600">`
   );
-  gallery.show();
+  instance.show();
 });
