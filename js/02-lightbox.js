@@ -3,28 +3,25 @@ import { galleryItems } from "./gallery-items.js";
 
 const ul = document.querySelector(".gallery");
 
-for (const gallery of galleryItems) {
-  const Elementli = `<div class= "gallery__item" href="${gallery.or}">
-  
-  <img 
-  class="gallery__image" 
-  src="${gallery.preview}" 
-  alt="${gallery.description}" />
-</a>
-    </div>`;
-  const listElement = document.createElement("li");
-  listElement.innerHTML = Elementli;
-  ul.appendChild(listElement);
-}
-console.log(galleryItems);
+galleryItems.forEach((item) => {
+  const newLi = document.createElement("li");
+  newLi.classList.add("gallery__item");
 
-ul.addEventListener("click", (ev) => {
-  ev.preventDefault();
+  ul.appendChild(newLi);
+  newLi.insertAdjacentHTML(
+    "beforeend",
+    `<a class= "gallery__link" href="${item.original}">
 
-  const instance = window.basicLightbox.create(
-    `<img src="${event.target.dataset.source}" width="800" height="600">`
+  <img
+  class="gallery__image"
+  src="${item.preview}"
+alt="${item.description}" />
+ </a>`
   );
-  instance.show();
+});
+const lightbox = new SimpleLightbox(".gallery a", {
+  captionDelay: 250,
+  captionData: "alt",
 });
 
 console.log(galleryItems);
