@@ -1,4 +1,5 @@
 import { galleryItems } from "./gallery-items.js";
+
 // Change code below this line
 
 const ul = document.querySelector(".gallery");
@@ -19,9 +20,9 @@ alt="${item.description}" />
  </a>`
   );
 });
-const lightbox = new SimpleLightbox(".gallery a", {
-  captionDelay: 250,
+const lightbox = new SimpleLightbox(".gallery li a", {
   captionData: "alt",
+  captionDelay: 250,
 });
 
 console.log(galleryItems);
